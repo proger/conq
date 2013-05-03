@@ -1,0 +1,35 @@
+name:                conq
+
+-- The package version.  See the Haskell package versioning policy (PVP) 
+-- for standards guiding when and how versions should be incremented.
+-- http://www.haskell.org/haskellwiki/Package_versioning_policy
+-- PVP summary:      +-+------- breaking API changes
+--                   | | +----- non-breaking API additions
+--                   | | | +--- code changes with no API change
+version:             0.1.0.0
+
+--synopsis:            
+-- description:         
+-- homepage:
+
+license:             MIT
+-- license-file:        LICENSE
+
+author:              Vladimir Kirillov
+maintainer:          proger@hackndev.com
+
+build-type:          Simple
+
+cabal-version:       >=1.8
+
+executable conq
+  main-is: conq.hs
+  
+  -- other-modules:       
+  
+  build-depends:       base ==4.6.*
+                     , ekg
+
+  ghc-options: 
+        -threaded 
+        -rtsopts=all
