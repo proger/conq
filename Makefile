@@ -1,11 +1,14 @@
 PROC= conq/conq
 EKG = localhost:5555
 
-default: mux
+GHC?= $(HOME)/dev/hs/ghc-7.6.3/inplace/bin/ghc-stage2
 
 run:
 	cabal build
 	dist/build/$(PROC) +RTS -sstderr -lsu
+
+configure:
+	cabal-dev configure --with-compiler=$(GHC)
 
 ekg:
 	open http://$(EKG)
