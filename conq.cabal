@@ -33,3 +33,4 @@ executable conq
   ghc-options: 
         -threaded 
         -rtsopts=all
+        -eventlog

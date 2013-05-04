@@ -2,13 +2,18 @@
 
 import Control.Concurrent
 import Control.Monad
+import Control.Exception
+
+import GHC.Conc (labelThread)
 
 import System.Remote.Monitoring
 
-forkDumbIO = newEmptyMVar >>= \mv -> forkIO (takeMVar mv >> yield) >>= print
+dumbloop = forever $ threadDelay 10000000 >> dumbloop
+forkDumbIO = forkIO dumbloop >>= \tid -> labelThread tid "dumb" >> print tid >> return tid
 
 bomb = mapM (\_ -> forkDumbIO) [1..]
 
 main = do
      forkServer "localhost" 5555
-     bomb
+     replicateM 200 forkDumbIO
+     dumbloop

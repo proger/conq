@@ -1,2 +1,8 @@
 dist/
-ping6x
+*.eventlog
+cabal-dev
+*.o
+*.hi
+*.chi
+*.chs.h
+.virthualenv
